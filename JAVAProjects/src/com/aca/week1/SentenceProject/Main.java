@@ -1,4 +1,4 @@
-package com.aca.SentenceProject;
+package com.aca.week1.SentenceProject;
 
 public class Main {
 

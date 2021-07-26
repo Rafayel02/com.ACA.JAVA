@@ -1,4 +1,4 @@
-package com.aca.ClockProject;
+package com.aca.week1.ClockProject;
 
 public class Clock {
 

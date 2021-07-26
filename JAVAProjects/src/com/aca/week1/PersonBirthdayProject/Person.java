@@ -1,4 +1,4 @@
-package com.aca.PersonBirthdayProject;
+package com.aca.week1.PersonBirthdayProject;
 
 public class Person {
 

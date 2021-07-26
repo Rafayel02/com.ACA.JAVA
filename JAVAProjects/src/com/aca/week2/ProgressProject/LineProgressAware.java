@@ -1,4 +1,4 @@
-package com.aca.ProgressProject;
+package com.aca.week2.ProgressProject;
 
 public class LineProgressAware extends ProgressAware {
 

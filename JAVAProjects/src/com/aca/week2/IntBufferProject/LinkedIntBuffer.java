@@ -1,4 +1,4 @@
-package com.aca.IntBufferProject;
+package com.aca.week2.IntBufferProject;
 
 public class LinkedIntBuffer extends IntBuffer {
 
