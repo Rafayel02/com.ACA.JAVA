@@ -2,15 +2,24 @@ package com.aca.week4.lookandsay;
 
 public class Main {
     public static void main(String[] args) {
-        lookAndSay(10);
+        System.out.println(lookAndSay(1));
+        System.out.println(lookAndSay(2));
+        System.out.println(lookAndSay(3));
+        System.out.println(lookAndSay(4));
+        System.out.println(lookAndSay(5));
+        System.out.println(lookAndSay(6));
+        System.out.println(lookAndSay(7));
+        System.out.println(lookAndSay(8));
+        System.out.println(lookAndSay(9));
+        System.out.println(lookAndSay(10));
     }
 
-    private static void lookAndSay(final int n) {
+    private static String lookAndSay(final int n) {
         String result = "1";
         for (int i = 0; i < n; i++) {
             result = getCountFrom(result);
-            System.out.println(result);
         }
+        return result;
     }
 
     private static String getCountFrom(String number) {
