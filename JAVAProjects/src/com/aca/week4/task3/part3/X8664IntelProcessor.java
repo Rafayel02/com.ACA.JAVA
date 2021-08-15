@@ -1,4 +1,4 @@
-package com.aca.week4.Task3.part3;
+package com.aca.week4.task3.part3;
 
 public class X8664IntelProcessor implements Processor {
     @Override

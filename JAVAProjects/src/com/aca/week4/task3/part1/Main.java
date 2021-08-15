@@ -1,7 +1,7 @@
-package com.aca.week4.Task3.part1;
+package com.aca.week4.task3.part1;
 
-import com.aca.week4.Task1.part1.User;
-import com.aca.week4.Task1.part2.UserGroup;
+import com.aca.week4.task1.part1.User;
+import com.aca.week4.task1.part2.UserGroup;
 import com.aca.week4.task2.part2.ImmutablePoint;
 import com.aca.week4.task2.part4.Color;
 import com.aca.week4.task2.part4.ColoredTriangle;

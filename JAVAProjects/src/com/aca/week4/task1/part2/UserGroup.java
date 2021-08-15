@@ -1,8 +1,6 @@
-package com.aca.week4.Task1.part2;
+package com.aca.week4.task1.part2;
 
-import com.aca.week4.Task1.part1.User;
-
-import java.util.Arrays;
+import com.aca.week4.task1.part1.User;
 
 public class UserGroup implements Cloneable {
 

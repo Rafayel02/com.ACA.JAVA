@@ -1,4 +1,4 @@
-package com.aca.week4.Task3.part1;
+package com.aca.week4.task3.part1;
 
 public class Printer {
 

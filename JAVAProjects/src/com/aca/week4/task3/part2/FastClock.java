@@ -1,4 +1,4 @@
-package com.aca.week4.Task3.part2;
+package com.aca.week4.task3.part2;
 
 public class FastClock implements Clock {
     private long seconds;

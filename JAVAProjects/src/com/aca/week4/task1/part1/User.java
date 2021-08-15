@@ -1,4 +1,4 @@
-package com.aca.week4.Task1.part1;
+package com.aca.week4.task1.part1;
 
 public class User {
 
