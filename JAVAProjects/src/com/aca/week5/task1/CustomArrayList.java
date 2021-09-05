@@ -1,51 +1,32 @@
 package com.aca.week5.task1;
 
-import java.util.Arrays;
-import java.util.GregorianCalendar;
+import com.aca.week5.sortingalgorithms.BubbleSorter;
+import com.aca.week5.sortingalgorithms.QuickSorter;
+import com.aca.week5.sortingalgorithms.Sorter;
 
 public class CustomArrayList<T> {
-    private final int DEFAULT_CAPACITY;
+    private static final int DEFAULT_CAPACITY = 10;
     private static final int MAXIMUM_CAPACITY = 1000;
     private Object[] array;
-    private int size = 0;
+    private int currentIndex = 0;
 
     public CustomArrayList() {
-        this.DEFAULT_CAPACITY = 10;
-        this.array = new Object[DEFAULT_CAPACITY];
-    }
-
-    public CustomArrayList(int defaultCapacity) {
-        if (defaultCapacity > MAXIMUM_CAPACITY) {
-            throw new RuntimeException("Choose capacity less than " + MAXIMUM_CAPACITY);
-        }
-        this.DEFAULT_CAPACITY = defaultCapacity;
         this.array = new Object[DEFAULT_CAPACITY];
     }
 
     public void add(T t) {
         if (isAbleToAdd()) {
-            array[size++] = t;
+            array[currentIndex++] = t;
         }
     }
 
     public void add(int index, T t) {
-        if(index >= this.size - 1) {
+        if (index > this.currentIndex || index < 0) {
             throw new RuntimeException("Index is out of array's bounds");
         }
         if (isAbleToAdd()) {
-            Object[] tempArray = new Object[++size];
-            for (int i = 0; i < tempArray.length; i++) {
-                if (i >= index) {
-                    if (i == index) {
-                        tempArray[i] = t;
-                        continue;
-                    }
-                    tempArray[i] = array[i - 1];
-                    continue;
-                }
-                tempArray[i] = array[i];
-            }
-            array = tempArray;
+            addWithShift(index, t);
+            currentIndex++;
         }
     }
 
@@ -54,11 +35,103 @@ public class CustomArrayList<T> {
     }
 
     public int size() {
-        return this.size;
+        return this.currentIndex;
+    }
+
+    public int testSize() {
+        return this.array.length;
+    }
+
+    public void deleteByElement(T t) {
+        int index = getIdByElement(t);
+        if (index == -1) {
+            throw new RuntimeException("No such element in array");
+        }
+        deleteAndShift(index);
+        currentIndex--;
+        if (needToReduce()) {
+            reduce();
+        }
+    }
+
+    public void deleteByIndex(int index) {
+        if (index > this.currentIndex - 1 || index < 0) {
+            throw new RuntimeException("Index is out of array's bounds");
+        }
+        deleteAndShift(index);
+        currentIndex--;
+        if (needToReduce()) {
+            reduce();
+        }
+    }
+
+    public int getIdOfElement(T t) {
+        int idByElement = getIdByElement(t);
+        if (idByElement == -1) {
+            throw new RuntimeException("No such element in array");
+        }
+        return idByElement;
+    }
+
+    public void sortByBubble() {
+        Sorter sorter = new BubbleSorter();
+        sortBy(sorter);
+    }
+
+    public void sortByQuick() {
+        Sorter sorter = new QuickSorter();
+        sortBy(sorter);
+    }
+
+    private void reduce() {
+        Object[] temp = new Object[this.array.length / 2];
+        for (int i = 0; i < currentIndex; i++) {
+            temp[i] = this.array[i];
+        }
+        this.array = temp;
+    }
+
+    private boolean needToReduce() {
+        if (this.array.length == DEFAULT_CAPACITY) {
+            return false;
+        }
+        return currentIndex < this.array.length / 2;
+    }
+
+    private void sortBy(Sorter sorter) {
+        try {
+            array = sorter.sort(this.array, size());
+        } catch (Exception e) {
+            throw new RuntimeException("Only Integers can be sorted");
+        }
+    }
+
+    private void addWithShift(int index, T t) {
+        if (index > this.currentIndex) {
+            return;
+        }
+        T temp = (T) array[index];
+        array[index] = t;
+        addWithShift(index + 1, temp);
+    }
+
+    private void deleteAndShift(int index) {
+        for (int i = index; i < currentIndex; i++) {
+            array[i] = array[i + 1];
+        }
+    }
+
+    private int getIdByElement(T t) {
+        for (int i = 0; i < currentIndex; i++) {
+            if (array[i].equals(t)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     private boolean isAbleToAdd() {
-        if (size == MAXIMUM_CAPACITY) {
+        if (currentIndex == MAXIMUM_CAPACITY) {
             return false;
         }
         if (needToGrow()) {
@@ -68,30 +141,30 @@ public class CustomArrayList<T> {
     }
 
     private void grow() {
-        Object[] tempArray = new Object[this.array.length * 2];
-        copyArray(array, tempArray);
-        array = tempArray;
+        array = copyArray(array, this.array.length * 2);
     }
 
-    private void copyArray(Object[] from, Object[] to) {
+    private Object[] copyArray(Object[] from, int sizeOfNewArray) {
+        Object[] to = new Object[sizeOfNewArray];
         for (int i = 0; i < from.length; i++) {
             to[i] = from[i];
         }
+        return to;
     }
 
     private boolean needToGrow() {
-        return this.array.length == size;
+        return this.array.length == currentIndex;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < currentIndex; i++) {
             if (i == 0) {
                 sb.append("[");
             }
             sb.append(array[i]);
-            if (i == size - 1) {
+            if (i == currentIndex - 1) {
                 sb.append("]");
                 continue;
             }
