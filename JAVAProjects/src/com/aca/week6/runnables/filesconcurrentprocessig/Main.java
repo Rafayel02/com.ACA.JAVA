@@ -1,6 +1,6 @@
 package com.aca.week6.runnables.filesconcurrentprocessig;
 
-import com.aca.week6.utils.FilePath;
+import com.aca.week6.utils.Paths;
 
 import java.io.File;
 
@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         for (int i = 0; i < THREADS_COUNT; i++) {
             new Thread(new FileSearcherRunnable(
-                    new File(FilePath.DESKTOP_PATH + "testFiles\\file" + i + ".txt"),
+                    new File(Paths.DESKTOP_PATH + "testFiles\\file" + i + ".txt"),
                     VALUE_FOR_SEARCH
             )).start();
         }

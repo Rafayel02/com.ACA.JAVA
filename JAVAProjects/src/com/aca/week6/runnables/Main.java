@@ -2,7 +2,7 @@ package com.aca.week6.runnables;
 
 import com.aca.week6.runnables.fileWriter.FileWriterRunnable;
 import com.aca.week6.runnables.filegenerator.FileGeneratorRunnable;
-import com.aca.week6.utils.FilePath;
+import com.aca.week6.utils.Paths;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
         String fileName = "test.txt";
-        Runnable runnable2 = new FileWriterRunnable(new File(FilePath.DESKTOP_PATH + fileName));
+        Runnable runnable2 = new FileWriterRunnable(new File(Paths.DESKTOP_PATH + fileName));
         runnable2.run();
 
         Runnable runnable1 = new FileGeneratorRunnable();
@@ -38,7 +38,7 @@ public class Main {
             public void run() {
                 for (int i = 0; i < FileGeneratorRunnable.FILES_COUNT; i++) {
                     String fileName = "testFiles\\file" + i + ".txt";
-                    try (BufferedReader reader = new BufferedReader(new FileReader(new File(FilePath.DESKTOP_PATH + fileName)))) {
+                    try (BufferedReader reader = new BufferedReader(new FileReader(new File(Paths.DESKTOP_PATH + fileName)))) {
                         for (int j = 0; j < FileWriterRunnable.ROW_COUNT; j++) {
                             String text = reader.readLine().split(": ")[1];
                             if (areEqual(i, text, inputStrings)) {

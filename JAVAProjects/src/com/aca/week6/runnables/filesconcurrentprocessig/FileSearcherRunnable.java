@@ -1,7 +1,6 @@
 package com.aca.week6.runnables.filesconcurrentprocessig;
 
 import com.aca.week6.runnables.fileWriter.FileWriterRunnable;
-import com.aca.week6.utils.FilePath;
 
 import java.io.BufferedReader;
 import java.io.File;

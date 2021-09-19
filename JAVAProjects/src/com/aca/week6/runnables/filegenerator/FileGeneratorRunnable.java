@@ -1,7 +1,7 @@
 package com.aca.week6.runnables.filegenerator;
 
 import com.aca.week6.runnables.fileWriter.FileWriterRunnable;
-import com.aca.week6.utils.FilePath;
+import com.aca.week6.utils.Paths;
 
 import java.io.File;
 
@@ -13,7 +13,7 @@ public class FileGeneratorRunnable implements Runnable {
     public void run() {
         for (int i = 0; i < FILES_COUNT; i++) {
             String fileName = "testFiles\\file" + i + ".txt";
-            Runnable fileWriterRunnable = new FileWriterRunnable(new File(FilePath.DESKTOP_PATH + fileName));
+            Runnable fileWriterRunnable = new FileWriterRunnable(new File(Paths.DESKTOP_PATH + fileName));
             fileWriterRunnable.run();
         }
     }
