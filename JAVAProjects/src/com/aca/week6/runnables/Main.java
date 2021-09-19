@@ -41,8 +41,8 @@ public class Main {
                     try (BufferedReader reader = new BufferedReader(new FileReader(new File(FilePath.DESKTOP_PATH + fileName)))) {
                         for (int j = 0; j < FileWriterRunnable.ROW_COUNT; j++) {
                             String text = reader.readLine().split(": ")[1];
-                            if(areEqual(i, text, inputStrings)) {
-                                System.out.println("file"+ i +" contains " + text);
+                            if (areEqual(i, text, inputStrings)) {
+                                System.out.println("file" + i + " contains " + text);
                             }
                         }
                     } catch (IOException e) {
@@ -57,8 +57,8 @@ public class Main {
     }
 
     private static boolean areEqual(int i, String text, List<String> inputStrings) {
-        for(String inputtedText: inputStrings) {
-            if(inputtedText.equals(text)) {
+        for (String inputtedText : inputStrings) {
+            if (inputtedText.equals(text)) {
                 return true;
             }
         }

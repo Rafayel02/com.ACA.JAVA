@@ -28,7 +28,7 @@ public class FileWriterRunnable implements Runnable {
     private String getRandomStringLine() {
         StringBuilder sb = new StringBuilder();
         int size = (int) ((Math.random() * 3) + 1);
-        for(int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             sb.append(LETTERS[(int) (Math.random() * 25)]);
         }
         sb.append("\n");
