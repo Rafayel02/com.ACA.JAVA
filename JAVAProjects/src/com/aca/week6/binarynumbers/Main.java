@@ -23,7 +23,7 @@ public class Main {
             int decimalNumber2 = Integer.parseInt(String.valueOf(binaryNumber2), 2);
             int sum = decimalNumber1 + decimalNumber2;
 
-            writeBinaryNumbersTo(file,decimalNumber1, decimalNumber2, sum);
+            writeBinaryNumbersTo(file, decimalNumber1, decimalNumber2, sum);
         }
 
     }
