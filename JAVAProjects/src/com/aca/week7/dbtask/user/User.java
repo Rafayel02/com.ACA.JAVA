@@ -1,4 +1,4 @@
-package com.aca.week7.user;
+package com.aca.week7.dbtask.user;
 
 public class User {
     private final String name;

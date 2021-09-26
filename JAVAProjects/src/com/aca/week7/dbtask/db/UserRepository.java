@@ -1,6 +1,6 @@
-package com.aca.week7.db;
+package com.aca.week7.dbtask.db;
 
-import com.aca.week7.user.User;
+import com.aca.week7.dbtask.user.User;
 
 import java.sql.SQLException;
 
