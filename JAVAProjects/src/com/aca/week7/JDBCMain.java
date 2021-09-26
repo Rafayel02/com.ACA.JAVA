@@ -7,8 +7,6 @@ import java.sql.SQLException;
 
 public class JDBCMain {
 
-
-
     public static void main(String[] args) throws SQLException {
         User user1 = new User("Valodik", 42);
         User user2 = new User("Vaspur", 24);
