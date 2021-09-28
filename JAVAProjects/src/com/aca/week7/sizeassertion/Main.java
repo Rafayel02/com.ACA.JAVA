@@ -5,16 +5,21 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        List list = new ArrayList();
+        List<String> list = new ArrayList<>();
         System.out.println(check(list, 0));
 
-        Set set = new HashSet();
+        Set<Integer> set = new HashSet<>();
         System.out.println(check(set, 2));
     }
 
-    public static boolean check(final Collection collection, int size) {
-        if(collection.size() != size) {
-            throw new RuntimeException("Size mismatch!");
+    public static boolean check(final Collection<?> collection, int size) {
+        if (collection.size() != size) {
+            throw new SizeMismatchException(
+                    String.format(
+                            "Size of collection - %s, expected size - %s",
+                            collection.size(),
+                            size)
+            );
         }
         return true;
     }
