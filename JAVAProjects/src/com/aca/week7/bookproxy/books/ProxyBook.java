@@ -6,7 +6,7 @@ public class ProxyBook extends Book {
     private boolean flag;
 
     public void load() {
-        if(!isLoaded()) {
+        if (!isLoaded()) {
             this.flag = true;
             return;
         }
@@ -15,7 +15,7 @@ public class ProxyBook extends Book {
 
     @Override
     public String getTitle() {
-        if(isLoaded()) {
+        if (isLoaded()) {
             return super.getTitle();
         }
         throw new FileLoaderException("File hasn't been loaded!");
@@ -23,7 +23,7 @@ public class ProxyBook extends Book {
 
     @Override
     public String getAuthor() {
-        if(isLoaded()) {
+        if (isLoaded()) {
             return super.getAuthor();
         }
         throw new FileLoaderException("File hasn't been loaded!");
